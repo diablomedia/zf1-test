@@ -33,4 +33,3 @@ Zend_Registry::set('router', $router);
 Zend_Registry::set('dispatcher', $dispatcher);
 Zend_Registry::set('plugin', $plugin);
 Zend_Registry::set('viewRenderer', $viewRenderer);
-

@@ -42,7 +42,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
      */
     public function setUp()
     {
-        $_SESSION = array();
+        $_SESSION       = array();
         $this->testCase = new Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete();
         $this->testCase->reset();
         $this->testCase->bootstrap = array($this, 'bootstrap');
@@ -366,8 +366,8 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertXpath("//div[@id='foo']//legend[contains(@class, ' baz ')]");
         $this->testCase->assertXpath("//div[@id='foo']//legend[contains(@class, ' bat ')]");
         $this->testCase->assertNotXpath("//div[@id='foo']//legend[contains(@class, ' bogus ')]");
-        $this->testCase->assertXpathContentContains("//legend[contains(@class, ' bat ')]", "La di da");
-        $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' bat ')]", "La do da");
+        $this->testCase->assertXpathContentContains("//legend[contains(@class, ' bat ')]", 'La di da');
+        $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' bat ')]", 'La do da');
         $this->testCase->assertXpathContentRegex("//legend[contains(@class, ' bat ')]", "/d[a'i]/i");
         $this->testCase->assertNotXpathContentRegex("//legend[contains(@class, ' bat ')]", "/d[o'e]/i");
         $this->testCase->assertXpathCountMin("//div[@id='foo']//legend[contains(@class, ' bar ')]", 2);
@@ -393,7 +393,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
             $this->assertSame('Failed asserting node DENOTED BY //div[@id=\'foo\']//legend[contains(@class, \' bogus \')] EXISTS', $e->getMessage());
         }
         try {
-            $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' bat ')]", "La di da");
+            $this->testCase->assertNotXpathContentContains("//legend[contains(@class, ' bat ')]", 'La di da');
             $this->fail("Invalid assertions should throw exceptions; assertion against //legend[contains(@class, ' bat ')] failed");
         } catch (Zend_Test_PHPUnit_Constraint_Exception $e) {
             $this->assertSame('Failed asserting node DENOTED BY //legend[contains(@class, \' bat \')] DOES NOT CONTAIN content "La di da"', $e->getMessage());
@@ -844,7 +844,8 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertNotHeaderContains('Expires', 'my-bar');
         $this->testCase->assertHeaderRegex('Expires', '#^\d#i');
         $this->testCase->assertNotHeaderRegex(
-            'Expires', '#^[a-z-]+/[a-z-]+$#i'
+            'Expires',
+            '#^[a-z-]+/[a-z-]+$#i'
         );
 
         $this->testCase->getResponse()->setHeader('Expires', '0.0', true);
@@ -856,7 +857,8 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->testCase->assertNotHeaderContains('Expires', 'my-bar');
         $this->testCase->assertHeaderRegex('Expires', '#^\d+#i');
         $this->testCase->assertNotHeaderRegex(
-            'Expires', '#^[a-z-]+/[a-z-]+$#i'
+            'Expires',
+            '#^[a-z-]+/[a-z-]+$#i'
         );
     }
 

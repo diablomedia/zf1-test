@@ -43,27 +43,29 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
         $dataSet->addTable($this->createBarTable());
 
         $this->assertEquals(
-            "foo", $dataSet->getTableMetaData('foo')->getTableName()
+            'foo',
+            $dataSet->getTableMetaData('foo')->getTableName()
         );
         $this->assertEquals(
-            "bar", $dataSet->getTableMetaData("bar")->getTableName()
+            'bar',
+            $dataSet->getTableMetaData('bar')->getTableName()
         );
 
-        $this->assertEquals(array("foo", "bar"), $dataSet->getTableNames());
+        $this->assertEquals(array('foo', 'bar'), $dataSet->getTableNames());
     }
 
     public function testZendDbTableEqualsXmlDataSet()
     {
         $fooTable = $this->createFooTable();
-        $fooTable->insert(array("id" => null, "foo" => "foo", "bar" => "bar", "baz" => "baz"));
-        $fooTable->insert(array("id" => null, "foo" => "bar", "bar" => "bar", "baz" => "bar"));
-        $fooTable->insert(array("id" => null, "foo" => "baz", "bar" => "baz", "baz" => "baz"));
+        $fooTable->insert(array('id' => null, 'foo' => 'foo', 'bar' => 'bar', 'baz' => 'baz'));
+        $fooTable->insert(array('id' => null, 'foo' => 'bar', 'bar' => 'bar', 'baz' => 'bar'));
+        $fooTable->insert(array('id' => null, 'foo' => 'baz', 'bar' => 'baz', 'baz' => 'baz'));
 
         $dataSet = new Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet();
         $dataSet->addTable($fooTable);
 
         $xmlDataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(
-            dirname(__FILE__)."/_files/sqliteIntegrationFixture.xml"
+            dirname(__FILE__) . '/_files/sqliteIntegrationFixture.xml'
         );
 
         if (method_exists($xmlDataSet, 'assertEquals')) {
@@ -84,17 +86,17 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
     public function testSimpleTesterSetupAndRowsetEquals()
     {
         $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(
-            dirname(__FILE__)."/_files/sqliteIntegrationFixture.xml"
+            dirname(__FILE__) . '/_files/sqliteIntegrationFixture.xml'
         );
-        $fooDataTable = $dataSet->getTable("foo");
+        $fooDataTable = $dataSet->getTable('foo');
 
         $tester = new Zend_Test_PHPUnit_Db_SimpleTester($this->getConnection());
         $tester->setUpDatabase($dataSet);
 
         $fooTable = $this->createFooTable();
-        $rows = $fooTable->fetchAll();
+        $rows     = $fooTable->fetchAll();
 
-        $this->assertEquals(3, count($rows));
+        $this->assertCount(3, $rows);
 
         $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($rows);
         if (method_exists($rowsetTable, 'assertEquals')) {
@@ -125,14 +127,14 @@ abstract class Zend_Test_PHPUnit_Db_Integration_AbstractTestCase extends PHPUnit
 
 class Zend_Test_PHPUnit_Db_TableFoo extends Zend_Db_Table_Abstract
 {
-    protected $_name = "foo";
+    protected $_name = 'foo';
 
-    protected $_primary = "id";
+    protected $_primary = 'id';
 }
 
 class Zend_Test_PHPUnit_Db_TableBar extends Zend_Db_Table_Abstract
 {
-    protected $_name = "bar";
+    protected $_name = 'bar';
 
-    protected $_primary = "id";
+    protected $_primary = 'id';
 }

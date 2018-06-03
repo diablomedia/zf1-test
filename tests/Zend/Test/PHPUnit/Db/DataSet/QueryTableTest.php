@@ -36,7 +36,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
         $connectionMock = $this->getMockBuilder('PHPUnit\DbUnit\Database\Connection')->getMock();
 
         $this->expectException('Zend_Test_PHPUnit_Db_Exception');
-        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", "SELECT * FROM foo", $connectionMock);
+        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable('foo', 'SELECT * FROM foo', $connectionMock);
     }
 
     /**
@@ -45,7 +45,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
     public function testCreateQueryTableWithZendDbConnection()
     {
         $this->decorateConnectionMockWithZendAdapter();
-        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", "SELECT * FROM foo", $this->connectionMock);
+        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable('foo', 'SELECT * FROM foo', $this->connectionMock);
     }
 
     public function testLoadDataExecutesQueryOnZendAdapter()
@@ -57,11 +57,12 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 
         $this->decorateConnectionGetConnectionWith($adapterMock);
 
-        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", "SELECT * FROM foo", $this->connectionMock);
-        $data = $queryTable->getRow(0);
+        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable('foo', 'SELECT * FROM foo', $this->connectionMock);
+        $data       = $queryTable->getRow(0);
 
         $this->assertEquals(
-            array("foo" => "bar"), $data
+            array('foo' => 'bar'),
+            $data
         );
     }
 
@@ -74,15 +75,15 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 
         $this->decorateConnectionGetConnectionWith($adapterMock);
 
-        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", "SELECT * FROM foo", $this->connectionMock);
-        $count = $queryTable->getRowCount();
+        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable('foo', 'SELECT * FROM foo', $this->connectionMock);
+        $count      = $queryTable->getRowCount();
 
         $this->assertEquals(1, $count);
     }
 
     public function testDataIsLoadedOnlyOnce()
     {
-        $fixtureSql = "SELECT * FROM foo";
+        $fixtureSql = 'SELECT * FROM foo';
 
         $statementMock = new Zend_Test_DbStatement();
         $statementMock->append(array('foo' => 'bar'));
@@ -94,7 +95,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
 
         $this->decorateConnectionGetConnectionWith($adapterMock);
 
-        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", $fixtureSql, $this->connectionMock);
+        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable('foo', $fixtureSql, $this->connectionMock);
         $this->assertEquals(1, $queryTable->getRowCount());
         $this->assertEquals(1, $queryTable->getRowCount());
         $row = $queryTable->getRow(0);
@@ -104,16 +105,16 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTableTest extends Zend_Test_PHPUnit_Db_D
     public function testQueryTableWithoutRows()
     {
         $statementMock = new Zend_Test_DbStatement();
-        $adapterMock = new Zend_Test_DbAdapter();
+        $adapterMock   = new Zend_Test_DbAdapter();
         $adapterMock->appendStatementToStack($statementMock);
 
         $this->decorateConnectionGetConnectionWith($adapterMock);
-        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable("foo", null, $this->connectionMock);
+        $queryTable = new Zend_Test_PHPUnit_Db_DataSet_QueryTable('foo', null, $this->connectionMock);
 
         $metadata = $queryTable->getTableMetaData();
         $this->assertTrue($metadata instanceof PHPUnit\DbUnit\DataSet\ITableMetaData);
         $this->assertEquals(array(), $metadata->getColumns());
         $this->assertEquals(array(), $metadata->getPrimaryKeys());
-        $this->assertEquals("foo", $metadata->getTableName());
+        $this->assertEquals('foo', $metadata->getTableName());
     }
 }

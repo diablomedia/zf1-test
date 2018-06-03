@@ -42,8 +42,8 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTable extends PHPUnit\DbUnit\DataSet\Que
      */
     public function __construct($tableName, $query, PHPUnit\DbUnit\Database\Connection $databaseConnection)
     {
-        if( !($databaseConnection instanceof Zend_Test_PHPUnit_Db_Connection) ) {
-            throw new Zend_Test_PHPUnit_Db_Exception("Zend_Test_PHPUnit_Db_DataSet_QueryTable only works with Zend_Test_PHPUnit_Db_Connection connections-");
+        if (!($databaseConnection instanceof Zend_Test_PHPUnit_Db_Connection)) {
+            throw new Zend_Test_PHPUnit_Db_Exception('Zend_Test_PHPUnit_Db_DataSet_QueryTable only works with Zend_Test_PHPUnit_Db_Connection connections-');
         }
         parent::__construct($tableName, $query, $databaseConnection);
     }
@@ -55,8 +55,8 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTable extends PHPUnit\DbUnit\DataSet\Que
      */
     protected function loadData()
     {
-        if($this->data === null) {
-            $stmt = $this->databaseConnection->getConnection()->query($this->query);
+        if ($this->data === null) {
+            $stmt       = $this->databaseConnection->getConnection()->query($this->query);
             $this->data = $stmt->fetchAll(Zend_Db::FETCH_ASSOC);
         }
     }
@@ -66,15 +66,15 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTable extends PHPUnit\DbUnit\DataSet\Que
      */
     protected function createTableMetaData()
     {
-        if ($this->tableMetaData === NULL)
-        {
+        if ($this->tableMetaData === null) {
             $this->loadData();
             $keys = array();
-            if(count($this->data) > 0) {
+            if (count($this->data) > 0) {
                 $keys = array_keys($this->data[0]);
             }
             $this->tableMetaData = new PHPUnit\DbUnit\DataSet\DefaultTableMetadata(
-                $this->tableName, $keys
+                $this->tableName,
+                $keys
             );
         }
     }

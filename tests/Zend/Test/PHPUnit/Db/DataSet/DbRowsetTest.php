@@ -43,25 +43,25 @@ class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends PHPUnit\Framework\TestCa
 
     public function testRowsetCountInITableRepresentation()
     {
-        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($this->getRowSet(), "fooTable");
+        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($this->getRowSet(), 'fooTable');
         $this->assertEquals(2, $rowsetTable->getRowCount());
     }
 
     public function testRowsetGetSpecificValue()
     {
-        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($this->getRowSet(), "fooTable");
-        $this->assertEquals("bar", $rowsetTable->getValue(0, "foo"));
+        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($this->getRowSet(), 'fooTable');
+        $this->assertEquals('bar', $rowsetTable->getValue(0, 'foo'));
     }
 
     public function testRowsetGetSpecificRow()
     {
-        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($this->getRowSet(), "fooTable");
-        $this->assertEquals(array("foo" => "baz"), $rowsetTable->getRow(1));
+        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($this->getRowSet(), 'fooTable');
+        $this->assertEquals(array('foo' => 'baz'), $rowsetTable->getRow(1));
     }
 
     public function testRowset_ConstructWithDisconnectedRowset_NoTableName_ThrowsException()
     {
-        $this->expectException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException('Zend_Test_PHPUnit_Db_Exception');
 
         $rowset = $this->getMockBuilder('Zend_Db_Table_Rowset_Abstract')
             ->disableOriginalConstructor()
@@ -75,7 +75,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends PHPUnit\Framework\TestCa
 
     public function testRowset_WithNoRows_GetColumnsFromTable()
     {
-        $columns = array("foo", "bar");
+        $columns = array('foo', 'bar');
 
         $tableMock = $this->getMockBuilder('Zend_Db_Table_Abstract')
             ->disableOriginalConstructor()
@@ -93,8 +93,8 @@ class Zend_Test_PHPUnit_Db_DataSet_DbRowsetTest extends PHPUnit\Framework\TestCa
                ->will($this->returnValue($tableMock));
         $rowset->expects($this->once())
                ->method('toArray')
-               ->will($this->returnValue( array() ));
+               ->will($this->returnValue(array()));
 
-        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($rowset, "tableName");
+        $rowsetTable = new Zend_Test_PHPUnit_Db_DataSet_DbRowset($rowset, 'tableName');
     }
 }

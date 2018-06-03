@@ -40,7 +40,7 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends PHPUnit\Framework\Tes
 
     public function testDeleteAll()
     {
-        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
+        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__) . '/_files/truncateFixture.xml');
 
         $testAdapter = $this->getMockBuilder('Zend_Test_DbAdapter')->getMock();
         $testAdapter->expects($this->at(0))
@@ -50,7 +50,7 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends PHPUnit\Framework\Tes
                     ->method('delete')
                     ->with('bar');
 
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
         $this->operation->execute($connection, $dataSet);
     }
@@ -59,23 +59,23 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAllTest extends PHPUnit\Framework\Tes
     {
         $this->expectException('PHPUnit\DbUnit\Operation\Exception');
 
-        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
+        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__) . '/_files/truncateFixture.xml');
 
         $testAdapter = $this->getMockBuilder('Zend_Test_DbAdapter')->getMock();
         $testAdapter->expects($this->any())
                     ->method('delete')
                     ->will($this->throwException(new Exception));
 
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
         $this->operation->execute($connection, $dataSet);
     }
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->expectException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException('Zend_Test_PHPUnit_Db_Exception');
 
-        $dataSet = $this->getMockBuilder('PHPUnit\DbUnit\DataSet\IDataSet')->getMock();
+        $dataSet    = $this->getMockBuilder('PHPUnit\DbUnit\DataSet\IDataSet')->getMock();
         $connection = $this->getMockBuilder('PHPUnit\DbUnit\Database\Connection')->getMock();
 
         $this->operation->execute($connection, $dataSet);

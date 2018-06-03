@@ -39,8 +39,8 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSet extends PHPUnit\DbUnit\DataSet\Q
      */
     public function __construct(PHPUnit\DbUnit\Database\Connection $databaseConnection)
     {
-        if( !($databaseConnection instanceof Zend_Test_PHPUnit_Db_Connection) ) {
-            throw new Zend_Test_PHPUnit_Db_Exception("Zend_Test_PHPUnit_Db_DataSet_QueryDataSet only works with Zend_Test_PHPUnit_Db_Connection connections-");
+        if (!($databaseConnection instanceof Zend_Test_PHPUnit_Db_Connection)) {
+            throw new Zend_Test_PHPUnit_Db_Exception('Zend_Test_PHPUnit_Db_DataSet_QueryDataSet only works with Zend_Test_PHPUnit_Db_Connection connections-');
         }
         $this->databaseConnection = $databaseConnection;
     }
@@ -53,14 +53,14 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSet extends PHPUnit\DbUnit\DataSet\Q
      * @param string                $tableName
      * @param string|Zend_Db_Select $query
      */
-    public function addTable($tableName, $query = NULL)
+    public function addTable($tableName, $query = null)
     {
-        if ($query === NULL) {
+        if ($query === null) {
             $query = $this->databaseConnection->getConnection()->select();
             $query->from($tableName, Zend_Db_Select::SQL_WILDCARD);
         }
 
-        if($query instanceof Zend_Db_Select) {
+        if ($query instanceof Zend_Db_Select) {
             $query = $query->__toString();
         }
 

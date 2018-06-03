@@ -38,8 +38,8 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAll implements PHPUnit\DbUnit\Operati
      */
     public function execute(PHPUnit\DbUnit\Database\Connection $connection, PHPUnit\DbUnit\DataSet\IDataSet $dataSet)
     {
-        if(!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
-            throw new Zend_Test_PHPUnit_Db_Exception("Not a valid Zend_Test_PHPUnit_Db_Connection instance, ".get_class($connection)." given!");
+        if (!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
+            throw new Zend_Test_PHPUnit_Db_Exception('Not a valid Zend_Test_PHPUnit_Db_Connection instance, ' . get_class($connection) . ' given!');
         }
 
         foreach ($dataSet as $table) {
@@ -47,7 +47,7 @@ class Zend_Test_PHPUnit_Db_Operation_DeleteAll implements PHPUnit\DbUnit\Operati
                 $tableName = $table->getTableMetaData()->getTableName();
                 $connection->getConnection()->delete($tableName);
             } catch (Exception $e) {
-                throw new PHPUnit\DbUnit\Operation\Exception('DELETEALL', 'DELETE FROM '.$tableName.'', array(), $table, $e->getMessage());
+                throw new PHPUnit\DbUnit\Operation\Exception('DELETEALL', 'DELETE FROM ' . $tableName . '', array(), $table, $e->getMessage());
             }
         }
     }

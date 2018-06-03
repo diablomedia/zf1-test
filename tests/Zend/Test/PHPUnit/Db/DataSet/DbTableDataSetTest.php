@@ -33,7 +33,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends PHPUnit\Framework\
 {
     public function testAddTableAppendedToTableNames()
     {
-        $fixtureTable = "foo";
+        $fixtureTable = 'foo';
 
         $table = $this->getMockBuilder('Zend_Db_Table')
             ->disableOriginalConstructor()
@@ -50,7 +50,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSetTest extends PHPUnit\Framework\
 
     public function testAddTableCreatesDbTableInstance()
     {
-        $fixtureTable = "foo";
+        $fixtureTable = 'foo';
 
         $table = $this->getMockBuilder('Zend_Db_Table')
             ->disableOriginalConstructor()

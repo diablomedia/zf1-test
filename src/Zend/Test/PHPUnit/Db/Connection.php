@@ -63,7 +63,7 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit\DbUnit\Database\DefaultCon
     public function __construct(Zend_Db_Adapter_Abstract $db, $schema)
     {
         $this->_connection = $db;
-        $this->_schema = $schema;
+        $this->_schema     = $schema;
     }
 
     /**
@@ -106,7 +106,7 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit\DbUnit\Database\DefaultCon
      */
     public function getMetaData()
     {
-        if($this->_metaData === null) {
+        if ($this->_metaData === null) {
             $this->_metaData = new Zend_Test_PHPUnit_Db_Metadata_Generic($this->getConnection(), $this->getSchema());
         }
         return $this->_metaData;
@@ -129,6 +129,6 @@ class Zend_Test_PHPUnit_Db_Connection extends PHPUnit\DbUnit\Database\DefaultCon
      */
     public function getTruncateCommand()
     {
-        return "DELETE";
+        return 'DELETE';
     }
 }

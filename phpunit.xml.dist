@@ -15,6 +15,11 @@
         <const name="TESTS_ZEND_DB_ADAPTER_MYSQL_DATABASE" value="test" />
         <const name="TESTS_ZEND_DB_ADAPTER_MYSQL_PORT" value="3306" />
     </php>
+    <testsuites>
+        <testsuite name="default">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>

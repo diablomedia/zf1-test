@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-require_once __DIR__ . "/AbstractTestCase.php";
+require_once __DIR__ . '/AbstractTestCase.php';
 
 /**
  * @category   Zend
@@ -38,7 +38,7 @@ class Zend_Test_PHPUnit_Db_Integration_SqLiteIntegrationTest extends Zend_Test_P
             $this->markTestSkipped('PDO is required for this test.');
         }
 
-        if(!in_array('sqlite', PDO::getAvailableDrivers())) {
+        if (!in_array('sqlite', PDO::getAvailableDrivers())) {
             $this->markTestSkipped('SqLite is not included in PDO in this PHP installation.');
         }
 

@@ -49,11 +49,11 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSetTest extends Zend_Test_PHPUnit_Db
 
     public function testAddTableWithoutQueryParameterCreatesSelectWildcardAll()
     {
-        $fixtureTableName = "foo";
+        $fixtureTableName = 'foo';
 
         $adapterMock = $this->getMockBuilder('Zend_Test_DbAdapter')->getMock();
-        $selectMock = $this->getMockBuilder('Zend_Db_Select')
-            ->setConstructorArgs([$adapterMock])
+        $selectMock  = $this->getMockBuilder('Zend_Db_Select')
+            ->setConstructorArgs(array($adapterMock))
             ->getMock();
 
         $adapterMock->expects($this->once())

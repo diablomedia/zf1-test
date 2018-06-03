@@ -21,4 +21,5 @@
  */
 
 class Zend_Test_PHPUnit_Constraint_DomQuery extends Zend_Test_PHPUnit_Constraint_DomQuery41
-{}
+{
+}

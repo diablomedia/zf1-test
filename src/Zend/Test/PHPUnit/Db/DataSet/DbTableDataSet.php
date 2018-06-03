@@ -50,7 +50,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends PHPUnit\DbUnit\DataSet
      */
     public function addTable(Zend_Db_Table_Abstract $table, $where = null, $order = null, $count = null, $offset = null)
     {
-        $tableName = $table->info('name');
+        $tableName                = $table->info('name');
         $this->tables[$tableName] = new Zend_Test_PHPUnit_Db_DataSet_DbTable($table, $where, $order, $count, $offset);
     }
 
@@ -61,7 +61,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTableDataSet extends PHPUnit\DbUnit\DataSet
      * @param bool $reverse
      * @return PHPUnit\DbUnit\DataSet\DefaultTableIterator
      */
-    protected function createIterator($reverse = FALSE)
+    protected function createIterator($reverse = false)
     {
         return new PHPUnit\DbUnit\DataSet\DefaultTableIterator($this->tables, $reverse);
     }

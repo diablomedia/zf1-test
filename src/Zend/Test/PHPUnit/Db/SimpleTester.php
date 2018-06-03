@@ -39,11 +39,11 @@ class Zend_Test_PHPUnit_Db_SimpleTester extends PHPUnit\DbUnit\DefaultTester
      */
     public function __construct(PHPUnit\DbUnit\Database\Connection $connection)
     {
-        if(!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
-            throw new Zend_Test_PHPUnit_Db_Exception("Not a valid Zend_Test_PHPUnit_Db_Connection instance, ".get_class($connection)." given!");
+        if (!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
+            throw new Zend_Test_PHPUnit_Db_Exception('Not a valid Zend_Test_PHPUnit_Db_Connection instance, ' . get_class($connection) . ' given!');
         }
 
-        $this->connection = $connection;
+        $this->connection     = $connection;
         $this->setUpOperation = new PHPUnit\DbUnit\Operation\Composite(array(
             new Zend_Test_PHPUnit_Db_Operation_Truncate(),
             new Zend_Test_PHPUnit_Db_Operation_Insert(),

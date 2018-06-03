@@ -46,7 +46,7 @@ class Zend_Test_DbStatementTest extends PHPUnit\Framework\TestCase
 
     public function testCreateSelectStatementWithRows()
     {
-        $rows = array("foo", "bar");
+        $rows = array('foo', 'bar');
 
         $stmt = Zend_Test_DbStatement::createSelectStatement($rows);
 
@@ -80,7 +80,7 @@ class Zend_Test_DbStatementTest extends PHPUnit\Framework\TestCase
 
     public function testSetFetchRow()
     {
-        $row = array("foo");
+        $row = array('foo');
 
         $stmt = new Zend_Test_DbStatement();
         $stmt->append($row);
@@ -96,7 +96,7 @@ class Zend_Test_DbStatementTest extends PHPUnit\Framework\TestCase
 
     public function testFetchResult_FromEmptyResultStack()
     {
-        $row = array("foo");
+        $row = array('foo');
 
         $stmt = new Zend_Test_DbStatement();
         $stmt->append($row);
@@ -115,19 +115,19 @@ class Zend_Test_DbStatementTest extends PHPUnit\Framework\TestCase
 
     public function testFetchColumn()
     {
-        $row = array("foo" => "bar", "bar" => "baz");
+        $row = array('foo' => 'bar', 'bar' => 'baz');
 
         $stmt = new Zend_Test_DbStatement();
         $stmt->append($row);
 
-        $this->assertEquals("baz", $stmt->fetchColumn(1));
+        $this->assertEquals('baz', $stmt->fetchColumn(1));
     }
 
     public function testFetchColumn_OutOfBounds()
     {
-        $this->expectException("Zend_Db_Statement_Exception");
+        $this->expectException('Zend_Db_Statement_Exception');
 
-        $row = array("foo" => "bar", "bar" => "baz");
+        $row = array('foo' => 'bar', 'bar' => 'baz');
 
         $stmt = new Zend_Test_DbStatement();
         $stmt->append($row);
@@ -137,7 +137,7 @@ class Zend_Test_DbStatementTest extends PHPUnit\Framework\TestCase
 
     public function testFetchObject()
     {
-        $row = array("foo" => "bar", "bar" => "baz");
+        $row = array('foo' => 'bar', 'bar' => 'baz');
 
         $stmt = new Zend_Test_DbStatement();
         $stmt->append($row);
@@ -150,13 +150,13 @@ class Zend_Test_DbStatementTest extends PHPUnit\Framework\TestCase
 
     public function testFetchObject_ClassNotExists_ThrowsException()
     {
-        $this->expectException("Zend_Db_Statement_Exception");
+        $this->expectException('Zend_Db_Statement_Exception');
 
-        $row = array("foo" => "bar", "bar" => "baz");
+        $row = array('foo' => 'bar', 'bar' => 'baz');
 
         $stmt = new Zend_Test_DbStatement();
         $stmt->append($row);
 
-        $object = $stmt->fetchObject("anInvalidClassName");
+        $object = $stmt->fetchObject('anInvalidClassName');
     }
 }

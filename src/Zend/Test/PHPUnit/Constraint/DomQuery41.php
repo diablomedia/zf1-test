@@ -35,25 +35,25 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit\Framework\Constrai
     /**#@+
      * Assertion type constants
      */
-    const ASSERT_QUERY            = 'assertQuery';
-    const ASSERT_CONTENT_CONTAINS = 'assertQueryContentContains';
-    const ASSERT_CONTENT_REGEX    = 'assertQueryContentRegex';
-    const ASSERT_CONTENT_COUNT    = 'assertQueryCount';
-    const ASSERT_CONTENT_COUNT_MIN= 'assertQueryCountMin';
-    const ASSERT_CONTENT_COUNT_MAX= 'assertQueryCountMax';
+    const ASSERT_QUERY             = 'assertQuery';
+    const ASSERT_CONTENT_CONTAINS  = 'assertQueryContentContains';
+    const ASSERT_CONTENT_REGEX     = 'assertQueryContentRegex';
+    const ASSERT_CONTENT_COUNT     = 'assertQueryCount';
+    const ASSERT_CONTENT_COUNT_MIN = 'assertQueryCountMin';
+    const ASSERT_CONTENT_COUNT_MAX = 'assertQueryCountMax';
     /**#@-*/
 
     /**
      * Current assertion type
      * @var string
      */
-    protected $_assertType        = null;
+    protected $_assertType = null;
 
     /**
      * Available assertion types
      * @var array
      */
-    protected $_assertTypes       = array(
+    protected $_assertTypes = array(
         self::ASSERT_QUERY,
         self::ASSERT_CONTENT_CONTAINS,
         self::ASSERT_CONTENT_REGEX,
@@ -66,25 +66,25 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit\Framework\Constrai
      * Content being matched
      * @var string
      */
-    protected $_content           = null;
+    protected $_content = null;
 
     /**
      * Whether or not assertion is negated
      * @var bool
      */
-    protected $_negate            = false;
+    protected $_negate = false;
 
     /**
      * CSS selector or XPath path to select against
      * @var string
      */
-    protected $_path              = null;
+    protected $_path = null;
 
     /**
      * Whether or not to use XPath when querying
      * @var bool
      */
-    protected $_useXpath          = false;
+    protected $_useXpath = false;
 
     /**
      * XPath namespaces
@@ -162,7 +162,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit\Framework\Constrai
         $method   = $this->_useXpath ? 'queryXpath' : 'query';
         $domQuery = new Zend_Dom_Query($content);
         $domQuery->registerXpathNamespaces($this->_xpathNamespaces);
-        $result   = $domQuery->$method($this->_path);
+        $result = $domQuery->$method($this->_path);
 
         switch ($assertType) {
             case self::ASSERT_CONTENT_CONTAINS:
@@ -217,7 +217,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit\Framework\Constrai
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null)
     {
         switch ($this->_assertType) {
             case self::ASSERT_CONTENT_CONTAINS:

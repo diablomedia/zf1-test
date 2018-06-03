@@ -43,7 +43,7 @@ class Zend_Test_PHPUnit_Db_ConnectionTest extends PHPUnit\Framework\TestCase
      */
     public function createConnection()
     {
-        $connection = new Zend_Test_PHPUnit_Db_Connection($this->adapterMock, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($this->adapterMock, 'schema');
         return $connection;
     }
 
@@ -59,15 +59,15 @@ class Zend_Test_PHPUnit_Db_ConnectionTest extends PHPUnit\Framework\TestCase
     public function testCreateQueryTable()
     {
         $connection = $this->createConnection();
-        $ret = $connection->createQueryTable("foo", "foo");
+        $ret        = $connection->createQueryTable('foo', 'foo');
 
         $this->assertTrue($ret instanceof Zend_Test_PHPUnit_Db_DataSet_QueryTable);
     }
 
     public function testGetSchema()
     {
-        $fixtureSchema = "schema";
-        $connection = new Zend_Test_PHPUnit_Db_Connection($this->adapterMock, $fixtureSchema);
+        $fixtureSchema = 'schema';
+        $connection    = new Zend_Test_PHPUnit_Db_Connection($this->adapterMock, $fixtureSchema);
 
         $this->assertEquals($fixtureSchema, $connection->getSchema());
     }
@@ -75,7 +75,7 @@ class Zend_Test_PHPUnit_Db_ConnectionTest extends PHPUnit\Framework\TestCase
     public function testGetMetaData()
     {
         $connection = $this->createConnection();
-        $metadata = $connection->getMetaData();
+        $metadata   = $connection->getMetaData();
 
         $this->assertTrue($metadata instanceof Zend_Test_PHPUnit_Db_Metadata_Generic);
     }
@@ -84,6 +84,6 @@ class Zend_Test_PHPUnit_Db_ConnectionTest extends PHPUnit\Framework\TestCase
     {
         $connection = $this->createConnection();
 
-        $this->assertEquals("DELETE", $connection->getTruncateCommand());
+        $this->assertEquals('DELETE', $connection->getTruncateCommand());
     }
 }

@@ -38,7 +38,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit\Framework\TestCase
                     ->method('delete')
                     ->will($this->throwException(new Exception));
 
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
         $databaseTester = new Zend_Test_PHPUnit_Db_SimpleTester($connection);
 
@@ -55,7 +55,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit\Framework\TestCase
                     ->method('delete')
                     ->will($this->throwException(new Exception));
 
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
         $databaseTester = new Zend_Test_PHPUnit_Db_SimpleTester($connection);
 
@@ -71,7 +71,7 @@ class Zend_Test_PHPUnit_Db_SimpleTesterTest extends PHPUnit\Framework\TestCase
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->expectException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException('Zend_Test_PHPUnit_Db_Exception');
 
         $connection = $this->getMockBuilder('PHPUnit\DbUnit\Database\Connection')->getMock();
 

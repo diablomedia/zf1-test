@@ -45,9 +45,9 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
      */
     protected function getConnection()
     {
-        if($this->_connectionMock == null) {
+        if ($this->_connectionMock == null) {
             $this->_connectionMock = $this->getMockBuilder('Zend_Test_PHPUnit_Db_Connection')
-                ->setConstructorArgs([new Zend_Test_DbAdapter(), "schema"])
+                ->setConstructorArgs(array(new Zend_Test_DbAdapter(), 'schema'))
                 ->getMock();
         }
         return $this->_connectionMock;
@@ -76,11 +76,11 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
     public function testCheckZendDbConnectionConvenienceMethodReturnType()
     {
         $mock = $this->getMockBuilder('Zend_Db_Adapter_Pdo_Sqlite')
-            ->setMethods(['delete'])
+            ->setMethods(array('delete'))
             ->setMockClassName('Zend_Db_Adapter_Mock')
             ->disableOriginalConstructor()
             ->getMock();
-        $this->assertTrue($this->createZendDbConnection($mock, "test") instanceof Zend_Test_PHPUnit_Db_Connection);
+        $this->assertTrue($this->createZendDbConnection($mock, 'test') instanceof Zend_Test_PHPUnit_Db_Connection);
     }
 
     public function testCreateDbTableDataSetConvenienceMethodReturnType()
@@ -104,11 +104,11 @@ class Zend_Test_PHPUnit_Db_TestCaseTest extends Zend_Test_PHPUnit_DatabaseTestCa
     public function testCreateDbRowsetConvenienceMethodReturnType()
     {
         $mock = $this->getMockBuilder('Zend_Db_Table_Rowset')
-            ->setConstructorArgs([[]])
+            ->setConstructorArgs(array(array()))
             ->getMock();
-        $mock->expects($this->once())->method('toArray')->will($this->returnValue(array("foo" => 1, "bar" => 1)));
+        $mock->expects($this->once())->method('toArray')->will($this->returnValue(array('foo' => 1, 'bar' => 1)));
 
-        $rowset = $this->createDbRowset($mock, "fooTable");
+        $rowset = $this->createDbRowset($mock, 'fooTable');
 
         $this->assertTrue($rowset instanceof Zend_Test_PHPUnit_Db_DataSet_DbRowset);
     }

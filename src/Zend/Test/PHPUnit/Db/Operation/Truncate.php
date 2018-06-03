@@ -40,16 +40,16 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements PHPUnit\DbUnit\Operatio
      */
     public function execute(PHPUnit\DbUnit\Database\Connection $connection, PHPUnit\DbUnit\DataSet\IDataSet $dataSet)
     {
-        if(!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
-            throw new Zend_Test_PHPUnit_Db_Exception("Not a valid Zend_Test_PHPUnit_Db_Connection instance, ".get_class($connection)." given!");
+        if (!($connection instanceof Zend_Test_PHPUnit_Db_Connection)) {
+            throw new Zend_Test_PHPUnit_Db_Exception('Not a valid Zend_Test_PHPUnit_Db_Connection instance, ' . get_class($connection) . ' given!');
         }
 
-        foreach ($dataSet->getReverseIterator() AS $table) {
+        foreach ($dataSet->getReverseIterator() as $table) {
             try {
                 $tableName = $table->getTableMetaData()->getTableName();
                 $this->_truncate($connection->getConnection(), $tableName);
             } catch (Exception $e) {
-                throw new PHPUnit\DbUnit\Operation\Exception('TRUNCATE', 'TRUNCATE '.$tableName.'', array(), $table, $e->getMessage());
+                throw new PHPUnit\DbUnit\Operation\Exception('TRUNCATE', 'TRUNCATE ' . $tableName . '', array(), $table, $e->getMessage());
             }
         }
     }
@@ -64,9 +64,9 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements PHPUnit\DbUnit\Operatio
     protected function _truncate(Zend_Db_Adapter_Abstract $db, $tableName)
     {
         $tableName = $db->quoteIdentifier($tableName, true);
-        if($db instanceof Zend_Db_Adapter_Pdo_Sqlite) {
-            $db->query('DELETE FROM '.$tableName);
-        } else if($db instanceof Zend_Db_Adapter_Db2) {
+        if ($db instanceof Zend_Db_Adapter_Pdo_Sqlite) {
+            $db->query('DELETE FROM ' . $tableName);
+        } elseif ($db instanceof Zend_Db_Adapter_Db2) {
             /*if(strstr(PHP_OS, "WIN")) {
                 $file = tempnam(sys_get_temp_dir(), "zendtestdbibm_");
                 file_put_contents($file, "");
@@ -75,13 +75,13 @@ class Zend_Test_PHPUnit_Db_Operation_Truncate implements PHPUnit\DbUnit\Operatio
             } else {
                 $db->query('IMPORT FROM /dev/null OF DEL REPLACE INTO '.$tableName);
             }*/
-            throw new Zend_Exception("IBM Db2 TRUNCATE not supported.");
-        } else if($this->_isMssqlOrOracle($db)) {
-            $db->query('TRUNCATE TABLE '.$tableName);
-        } else if($db instanceof Zend_Db_Adapter_Pdo_Pgsql) {
-            $db->query('TRUNCATE '.$tableName.' CASCADE');
+            throw new Zend_Exception('IBM Db2 TRUNCATE not supported.');
+        } elseif ($this->_isMssqlOrOracle($db)) {
+            $db->query('TRUNCATE TABLE ' . $tableName);
+        } elseif ($db instanceof Zend_Db_Adapter_Pdo_Pgsql) {
+            $db->query('TRUNCATE ' . $tableName . ' CASCADE');
         } else {
-            $db->query('TRUNCATE '.$tableName);
+            $db->query('TRUNCATE ' . $tableName);
         }
     }
 

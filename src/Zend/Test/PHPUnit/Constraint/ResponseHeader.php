@@ -21,4 +21,5 @@
  */
 
 class Zend_Test_PHPUnit_Constraint_ResponseHeader extends Zend_Test_PHPUnit_Constraint_ResponseHeader41
-{}
+{
+}

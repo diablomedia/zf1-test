@@ -40,7 +40,7 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends PHPUnit\Framework\Test
 
     public function testTruncateTablesExecutesAdapterQuery()
     {
-        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
+        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__) . '/_files/truncateFixture.xml');
 
         $testAdapter = $this->getMockBuilder('Zend_Test_DbAdapter')->getMock();
         $testAdapter->expects($this->at(0))
@@ -56,7 +56,7 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends PHPUnit\Framework\Test
                     ->method('query')
                     ->with('TRUNCATE foo');
 
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
         $this->operation->execute($connection, $dataSet);
     }
@@ -65,21 +65,21 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends PHPUnit\Framework\Test
     {
         $this->expectException('PHPUnit\DbUnit\Operation\Exception');
 
-        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/insertFixture.xml");
+        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__) . '/_files/insertFixture.xml');
 
         $testAdapter = $this->getMockBuilder('Zend_Test_DbAdapter')->getMock();
         $testAdapter->expects($this->any())->method('query')->will($this->throwException(new Exception()));
 
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
         $this->operation->execute($connection, $dataSet);
     }
 
     public function testInvalidConnectionGivenThrowsException()
     {
-        $this->expectException("Zend_Test_PHPUnit_Db_Exception");
+        $this->expectException('Zend_Test_PHPUnit_Db_Exception');
 
-        $dataSet = $this->getMockBuilder('PHPUnit\DbUnit\DataSet\IDataSet')->getMock();
+        $dataSet    = $this->getMockBuilder('PHPUnit\DbUnit\DataSet\IDataSet')->getMock();
         $connection = $this->getMockBuilder('PHPUnit\DbUnit\Database\Connection')->getMock();
 
         $this->operation->execute($connection, $dataSet);
@@ -91,16 +91,16 @@ class Zend_Test_PHPUnit_Db_Operation_TruncateTest extends PHPUnit\Framework\Test
     public function testTruncateAppliedToTablesInReverseOrder()
     {
         $testAdapter = new Zend_Test_DbAdapter();
-        $connection = new Zend_Test_PHPUnit_Db_Connection($testAdapter, "schema");
+        $connection  = new Zend_Test_PHPUnit_Db_Connection($testAdapter, 'schema');
 
-        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__)."/_files/truncateFixture.xml");
+        $dataSet = new PHPUnit\DbUnit\DataSet\FlatXmlDataSet(dirname(__FILE__) . '/_files/truncateFixture.xml');
 
         $this->operation->execute($connection, $dataSet);
 
         $profiler = $testAdapter->getProfiler();
-        $queries = $profiler->getQueryProfiles();
+        $queries  = $profiler->getQueryProfiles();
 
-        $this->assertEquals(2, count($queries));
+        $this->assertCount(2, $queries);
         $this->assertContains('bar', $queries[0]->getQuery());
         $this->assertContains('foo', $queries[1]->getQuery());
     }

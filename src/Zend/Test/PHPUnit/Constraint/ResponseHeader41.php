@@ -45,13 +45,13 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
      * Current assertion type
      * @var string
      */
-    protected $_assertType      = null;
+    protected $_assertType = null;
 
     /**
      * Available assertion types
      * @var array
      */
-    protected $_assertTypes     = array(
+    protected $_assertTypes = array(
         self::ASSERT_RESPONSE_CODE,
         self::ASSERT_HEADER,
         self::ASSERT_HEADER_CONTAINS,
@@ -61,28 +61,28 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
     /**
      * @var int Response code
      */
-    protected $_code              = 200;
+    protected $_code = 200;
 
     /**
      * @var int Actual response code
      */
-    protected $_actualCode        = null;
+    protected $_actualCode = null;
 
     /**
      * @var string Header
      */
-    protected $_header            = null;
+    protected $_header = null;
 
     /**
      * @var string pattern against which to compare header content
      */
-    protected $_match             = null;
+    protected $_match = null;
 
     /**
      * Whether or not assertion is negated
      * @var bool
      */
-    protected $_negate            = false;
+    protected $_negate = false;
 
     /**
      * Constructor; setup constraint state
@@ -135,8 +135,8 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
 
         $this->_assertType = $assertType;
 
-        $argv     = func_get_args();
-        $argc     = func_num_args();
+        $argv = func_get_args();
+        $argc = func_num_args();
 
         switch ($assertType) {
             case self::ASSERT_RESPONSE_CODE:
@@ -196,7 +196,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = NULL)
+    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null)
     {
         switch ($this->_assertType) {
             case self::ASSERT_RESPONSE_CODE:
@@ -260,7 +260,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
      */
     protected function _code(Zend_Controller_Response_Abstract $response, $code)
     {
-        $test = $this->_getCode($response);
+        $test              = $this->_getCode($response);
         $this->_actualCode = $test;
         return ($test == $code);
     }

@@ -73,15 +73,15 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit\DbUnit\DataSet\QueryT
      * @param int                           $count
      * @param int                           $offset
      */
-    public function __construct(Zend_Db_Table_Abstract $table, $where=null, $order=null, $count=null, $offset=null)
+    public function __construct(Zend_Db_Table_Abstract $table, $where = null, $order = null, $count = null, $offset = null)
     {
         $this->tableName = $table->info('name');
-        $this->_columns = $table->info('cols');
+        $this->_columns  = $table->info('cols');
 
-        $this->_table = $table;
-        $this->_where = $where;
-        $this->_order = $order;
-        $this->_count = $count;
+        $this->_table  = $table;
+        $this->_where  = $where;
+        $this->_order  = $order;
+        $this->_count  = $count;
         $this->_offset = $offset;
     }
 
@@ -94,9 +94,12 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit\DbUnit\DataSet\QueryT
     {
         if ($this->data === null) {
             $this->data = $this->_table->fetchAll(
-                $this->_where, $this->_order, $this->_count, $this->_offset
+                $this->_where,
+                $this->_order,
+                $this->_count,
+                $this->_offset
             );
-            if($this->data instanceof Zend_Db_Table_Rowset_Abstract) {
+            if ($this->data instanceof Zend_Db_Table_Rowset_Abstract) {
                 $this->data = $this->data->toArray();
             }
         }
@@ -107,7 +110,7 @@ class Zend_Test_PHPUnit_Db_DataSet_DbTable extends PHPUnit\DbUnit\DataSet\QueryT
      */
     protected function createTableMetaData()
     {
-        if ($this->tableMetaData === NULL) {
+        if ($this->tableMetaData === null) {
             $this->loadData();
             $this->tableMetaData = new PHPUnit\DbUnit\DataSet\DefaultTableMetadata($this->tableName, $this->_columns);
         }
