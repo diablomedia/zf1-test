@@ -284,9 +284,9 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
      */
     public function testAssertionsShouldIncreasePhpUnitAssertionCounter()
     {
+        $this->assertSame(0, $this->testCase->getNumAssertions());
         $this->testAssertQueryShouldDoNothingForValidResponseContent();
-        $this->assertTrue(0 < $this->testCase->getNumAssertions());
-        $this->assertTrue(12 <= $this->testCase->getNumAssertions());
+        $this->assertGreaterThan(0, $this->testCase->getNumAssertions());
     }
 
     public function testAssertQueryShouldThrowExceptionsForInValidResponseContent()

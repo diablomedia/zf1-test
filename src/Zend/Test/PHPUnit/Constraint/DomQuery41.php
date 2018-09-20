@@ -327,7 +327,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit\Framework\Constrai
 
         foreach ($result as $node) {
             $content = $this->_getNodeContent($node);
-            if (strpos($content, $match) !== false) {
+            if (strpos($content, (string) $match) !== false) {
                 return false;
             }
         }
