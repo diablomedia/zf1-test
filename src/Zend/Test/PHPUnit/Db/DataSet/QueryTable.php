@@ -53,7 +53,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTable extends PHPUnit\DbUnit\DataSet\Que
      *
      * @return void
      */
-    protected function loadData()
+    protected function loadData(): void
     {
         if ($this->data === null) {
             $stmt       = $this->databaseConnection->getConnection()->query($this->query);
@@ -64,7 +64,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryTable extends PHPUnit\DbUnit\DataSet\Que
     /**
      * Create Table Metadata
      */
-    protected function createTableMetaData()
+    protected function createTableMetaData(): void
     {
         if ($this->tableMetaData === null) {
             $this->loadData();

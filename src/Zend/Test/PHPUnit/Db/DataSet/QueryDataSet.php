@@ -53,7 +53,7 @@ class Zend_Test_PHPUnit_Db_DataSet_QueryDataSet extends PHPUnit\DbUnit\DataSet\Q
      * @param string                $tableName
      * @param string|Zend_Db_Select $query
      */
-    public function addTable($tableName, $query = null)
+    public function addTable($tableName, $query = null): void
     {
         if ($query === null) {
             $query = $this->databaseConnection->getConnection()->select();
