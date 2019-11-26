@@ -39,7 +39,7 @@
         "phpstan/phpstan": "0.11.19",
         "diablomedia/zendframework1-dojo": "*",
         "diablomedia/zendframework1-controller-action-helper-json": "*",
-        "friendsofphp/php-cs-fixer": "2.16.0",
+        "friendsofphp/php-cs-fixer": "2.16.1",
         "maglnet/composer-require-checker": "^1.1.0 || ^2.0.0",
         "phpro/grumphp": "^0.15.0 || ^0.16.0"
     },
