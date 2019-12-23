@@ -6,6 +6,4 @@ parameters:
         - %rootDir%/../../../vendor/*
         - %rootDir%/../../../tests/*
     ignoreErrors:
-        - '#Zend_Test_.+::__construct\(\) does not call parent constructor from Zend_.+\.#'
-        - '#Zend_Test_.+::__construct\(\) does not call parent constructor from PHPUnit.+\.#'
         - '#Access to an undefined property Zend_Test_PHPUnit_Db_DataSet_DbRowset::\$tableName\.#'
