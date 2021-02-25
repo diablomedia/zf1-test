@@ -21,7 +21,7 @@
         "diablomedia/zendframework1-filter": "^1.0.0",
         "diablomedia/zendframework1-layout": "^1.0.0",
         "diablomedia/zendframework1-session": "^1.0.0",
-        "phpunit/phpunit": "^8.0",
+        "phpunit/phpunit": "^8.1",
         "sebastian/comparator": "^3.0"
     },
     "autoload": {
