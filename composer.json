@@ -36,20 +36,22 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "0.12.50",
+        "phpstan/phpstan": "0.12.78",
         "diablomedia/zendframework1-dojo": "*",
         "diablomedia/zendframework1-controller-action-helper-json": "*",
-        "friendsofphp/php-cs-fixer": "2.16.4",
-        "maglnet/composer-require-checker": "^1.1.0 || ^2.0.0",
-        "phpro/grumphp": "^0.16.0"
+        "friendsofphp/php-cs-fixer": "2.18.2",
+        "maglnet/composer-require-checker": "^1.1.0 || ^2.0.0 || ^3.0.0",
+        "phpro/grumphp-shim": "^0.22.0 || ^1.1"
     },
     "archive": {
-        "exclude": ["/tests"]
+        "exclude": [
+            "/tests"
+        ]
     },
     "scripts": {
         "test": "phpunit",
         "test-with-coverage": "phpunit --coverage-clover=clover.xml",
-        "phpstan": "phpstan analyze -c phpstan.neon --no-progress --ansi",
+        "phpstan": "phpstan analyze -c phpstan.neon --no-progress --ansi --memory-limit=768M",
         "style-check": "php-cs-fixer fix --dry-run -vv"
     },
     "suggest": {
