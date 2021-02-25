@@ -1,9 +1,7 @@
 parameters:
-    level: 0
+    level: 1
     paths:
         - ./
     excludes_analyse:
         - %rootDir%/../../../vendor/*
         - %rootDir%/../../../tests/*
-    ignoreErrors:
-        - '#Access to an undefined property Zend_Test_PHPUnit_Db_DataSet_DbRowset::\$tableName\.#'

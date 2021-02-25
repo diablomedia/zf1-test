@@ -10,7 +10,7 @@
     "license": "BSD-3-Clause",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.1.0",
+        "php": "^7.1.0 || ^8.0",
         "diablomedia/zendframework1-exception": "^1.0.0",
         "diablomedia/zendframework1-loader": "^1.0.0",
         "diablomedia/zendframework1-registry": "^1.0.2",
@@ -21,8 +21,7 @@
         "diablomedia/zendframework1-filter": "^1.0.0",
         "diablomedia/zendframework1-layout": "^1.0.0",
         "diablomedia/zendframework1-session": "^1.0.0",
-        "phpunit/phpunit": "^7.5.15",
-        "phpunit/dbunit": "^4.0",
+        "phpunit/phpunit": "^8.0",
         "sebastian/comparator": "^3.0"
     },
     "autoload": {
