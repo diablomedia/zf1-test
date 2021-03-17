@@ -35,7 +35,7 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "0.12.78",
+        "phpstan/phpstan": "0.12.81",
         "diablomedia/zendframework1-dojo": "*",
         "diablomedia/zendframework1-controller-action-helper-json": "*",
         "friendsofphp/php-cs-fixer": "2.18.2",
