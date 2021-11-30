@@ -106,7 +106,7 @@ class Zend_Test_PHPUnit_Constraint_Redirect41 extends PHPUnit\Framework\Constrai
      *     public function evaluate($other, $description = '', $returnResult = FALSE)
      * We use the new interface for PHP-strict checking, but emulate the old one
      */
-    public function evaluate($other, $assertType = null, $variable = false)
+    public function evaluate($other, $assertType = null, $variable = false): ?bool
     {
         if (!$other instanceof Zend_Controller_Response_Abstract) {
             throw new Zend_Test_PHPUnit_Constraint_Exception('Redirect constraint assertions require a response object');

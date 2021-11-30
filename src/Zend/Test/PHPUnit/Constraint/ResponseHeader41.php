@@ -118,7 +118,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
      *     public function evaluate($other, $description = '', $returnResult = FALSE)
      * We use the new interface for PHP-strict checking, but emulate the old one
      */
-    public function evaluate($response, $assertType = '', $variable = false)
+    public function evaluate($response, $assertType = '', $variable = false): ?bool
     {
         if (!$response instanceof Zend_Controller_Response_Abstract) {
             throw new Zend_Test_PHPUnit_Constraint_Exception('Header constraint assertions require a response object');
