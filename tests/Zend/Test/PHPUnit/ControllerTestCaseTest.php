@@ -34,6 +34,8 @@
  */
 class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCase
 {
+    protected $testCase;
+
     /**
      * Sets up the fixture, for example, open a network connection.
      * This method is called before a test is executed.
@@ -80,13 +82,13 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
     public function testGetFrontControllerShouldReturnFrontController()
     {
         $controller = $this->testCase->getFrontController();
-        $this->assertTrue($controller instanceof Zend_Controller_Front);
+        $this->assertInstanceOf(Zend_Controller_Front::class, $controller);
     }
 
     public function testGetFrontControllerShouldReturnSameFrontControllerObjectOnRepeatedCalls()
     {
         $controller = $this->testCase->getFrontController();
-        $this->assertTrue($controller instanceof Zend_Controller_Front);
+        $this->assertInstanceOf(Zend_Controller_Front::class, $controller);
         $test = $this->testCase->getFrontController();
         $this->assertSame($controller, $test);
     }
@@ -94,13 +96,13 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
     public function testGetRequestShouldReturnRequestTestCase()
     {
         $request = $this->testCase->getRequest();
-        $this->assertTrue($request instanceof Zend_Controller_Request_HttpTestCase);
+        $this->assertInstanceOf(Zend_Controller_Request_HttpTestCase::class, $request);
     }
 
     public function testGetRequestShouldReturnSameRequestObjectOnRepeatedCalls()
     {
         $request = $this->testCase->getRequest();
-        $this->assertTrue($request instanceof Zend_Controller_Request_HttpTestCase);
+        $this->assertInstanceOf(Zend_Controller_Request_HttpTestCase::class, $request);
         $test = $this->testCase->getRequest();
         $this->assertSame($request, $test);
     }
@@ -108,13 +110,13 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
     public function testGetResponseShouldReturnResponseTestCase()
     {
         $response = $this->testCase->getResponse();
-        $this->assertTrue($response instanceof Zend_Controller_Response_HttpTestCase);
+        $this->assertInstanceOf(Zend_Controller_Response_HttpTestCase::class, $response);
     }
 
     public function testGetResponseShouldReturnSameResponseObjectOnRepeatedCalls()
     {
         $response = $this->testCase->getResponse();
-        $this->assertTrue($response instanceof Zend_Controller_Response_HttpTestCase);
+        $this->assertInstanceOf(Zend_Controller_Response_HttpTestCase::class, $response);
         $test = $this->testCase->getResponse();
         $this->assertSame($response, $test);
     }
@@ -122,13 +124,13 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
     public function testGetQueryShouldReturnQueryTestCase()
     {
         $query = $this->testCase->getQuery();
-        $this->assertTrue($query instanceof Zend_Dom_Query);
+        $this->assertInstanceOf(Zend_Dom_Query::class, $query);
     }
 
     public function testGetQueryShouldReturnSameQueryObjectOnRepeatedCalls()
     {
         $query = $this->testCase->getQuery();
-        $this->assertTrue($query instanceof Zend_Dom_Query);
+        $this->assertInstanceOf(Zend_Dom_Query::class, $query);
         $test = $this->testCase->getQuery();
         $this->assertSame($query, $test);
     }

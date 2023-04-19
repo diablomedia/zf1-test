@@ -9,18 +9,19 @@
     "homepage": "http://framework.zend.com/",
     "license": "BSD-3-Clause",
     "prefer-stable": true,
+    "minimum-stability": "dev",
     "require": {
-        "php": "^7.4 || ~8.0.0 || ~8.1.0",
-        "diablomedia/zendframework1-exception": "^1.0.0",
-        "diablomedia/zendframework1-loader": "^1.0.0",
-        "diablomedia/zendframework1-registry": "^1.0.2",
-        "diablomedia/zendframework1-controller": "^1.0.0",
-        "diablomedia/zendframework1-application": "^1.0.0",
-        "diablomedia/zendframework1-db": "^1.0.0",
-        "diablomedia/zendframework1-dom": "^1.0.0",
-        "diablomedia/zendframework1-filter": "^1.0.0",
-        "diablomedia/zendframework1-layout": "^1.0.0",
-        "diablomedia/zendframework1-session": "^1.0.0",
+        "php": "^7.4 || ~8.0.0 || ~8.1.0 || ~8.2.0",
+        "diablomedia/zendframework1-exception": "dev-master as 1.0.0",
+        "diablomedia/zendframework1-loader": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-registry": "dev-php-82 as 1.0.2",
+        "diablomedia/zendframework1-controller": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-application": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-db": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-dom": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-filter": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-layout": "dev-php-82 as 1.0.0",
+        "diablomedia/zendframework1-session": "dev-php-82 as 1.0.0",
         "phpunit/phpunit": "^9.5.10",
         "sebastian/comparator": "^4.0"
     },
@@ -35,10 +36,10 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "1.8.0",
+        "phpstan/phpstan": "1.10.13",
         "diablomedia/zendframework1-dojo": "*",
         "diablomedia/zendframework1-controller-action-helper-json": "*",
-        "friendsofphp/php-cs-fixer": "3.6.0",
+        "friendsofphp/php-cs-fixer": "3.16.0",
         "maglnet/composer-require-checker": "^3.0.0",
         "phpro/grumphp-shim": "^1.5.0"
     },
@@ -55,5 +56,10 @@
     },
     "suggest": {
         "ext-dom": "Required for the DomQuery constraint"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp-shim": true
+        }
     }
 }
