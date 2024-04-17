@@ -10,7 +10,7 @@
     "license": "BSD-3-Clause",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4 || ~8.0.0 || ~8.1.0 || ~8.2.0",
+        "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
         "diablomedia/zendframework1-exception": "^1.0.0",
         "diablomedia/zendframework1-loader": "^1.0.0",
         "diablomedia/zendframework1-registry": "^1.0.2",
@@ -21,7 +21,7 @@
         "diablomedia/zendframework1-filter": "^1.0.0",
         "diablomedia/zendframework1-layout": "^1.0.0",
         "diablomedia/zendframework1-session": "^1.0.0",
-        "phpunit/phpunit": "^9.5.10",
+        "phpunit/phpunit": "^9.6.19",
         "sebastian/comparator": "^4.0"
     },
     "autoload": {
@@ -35,12 +35,12 @@
         }
     },
     "require-dev": {
-        "phpstan/phpstan": "1.10.15",
+        "phpstan/phpstan": "1.10.67",
+        "friendsofphp/php-cs-fixer": "3.54.0",
         "diablomedia/zendframework1-dojo": "*",
         "diablomedia/zendframework1-controller-action-helper-json": "*",
-        "friendsofphp/php-cs-fixer": "3.16.0",
         "maglnet/composer-require-checker": "^3.0.0",
-        "phpro/grumphp-shim": "^1.5.0"
+        "phpro/grumphp-shim": "^2.0.0"
     },
     "archive": {
         "exclude": [
