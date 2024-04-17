@@ -45,7 +45,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
     public function setUp(): void
     {
         $_SESSION       = array();
-        $this->testCase = new Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete();
+        $this->testCase = new Zend_Test_PHPUnit_ControllerTestCaseTest_Concrete($this::class);
         $this->testCase->reset();
         $this->testCase->bootstrap = array($this, 'bootstrap');
     }
@@ -286,6 +286,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
      */
     public function testAssertionsShouldIncreasePhpUnitAssertionCounter()
     {
+        $this->markTestSkipped('This is no longer possible in PHPUnit 10');
         $this->assertSame(0, $this->testCase->getNumAssertions());
         $this->testAssertQueryShouldDoNothingForValidResponseContent();
         $this->assertGreaterThan(0, $this->testCase->getNumAssertions());
@@ -804,7 +805,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
      * Data provider for testRedirectWorksAsExpectedFromHookMethodsInActionController
      * @return array
      */
-    public function providerRedirectWorksAsExpectedFromHookMethodsInActionController()
+    public static function providerRedirectWorksAsExpectedFromHookMethodsInActionController()
     {
         return array(
             array('/zend-test-redirect-from-init/baz'),
@@ -868,7 +869,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
      * Data provider for testRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin
      * @return array
      */
-    public function providerRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin()
+    public static function providerRedirectWorksAsExpectedFromHookMethodsInFrontControllerPlugin()
     {
         return array(
             array('RouteStartup'),
