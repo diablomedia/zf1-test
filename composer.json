@@ -38,6 +38,7 @@
         "phpstan/phpstan": "1.10.67",
         "friendsofphp/php-cs-fixer": "3.54.0",
         "diablomedia/zendframework1-dojo": ">=1.0.5",
+        "diablomedia/zendframework1-view": ">=1.0.5",
         "diablomedia/zendframework1-controller-action-helper-json": ">=1.0.4",
         "maglnet/composer-require-checker": "^3.0.0",
         "phpro/grumphp-shim": "^2.0.0"
