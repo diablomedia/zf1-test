@@ -196,7 +196,7 @@ class Zend_Test_PHPUnit_Constraint_ResponseHeader41 extends PHPUnit\Framework\Co
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail(mixed $other, string $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null): never
+    public function fail(mixed $other, string $description, ?\SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null): never
     {
         switch ($this->_assertType) {
             case self::ASSERT_RESPONSE_CODE:
