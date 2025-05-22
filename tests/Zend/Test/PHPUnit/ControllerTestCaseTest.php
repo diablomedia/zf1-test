@@ -651,7 +651,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $this->assertNotSame($request, $test);
     }
 
-    /*public function testResetResponseShouldClearAllViewPlaceholders()
+    public function testResetResponseShouldClearAllViewPlaceholders()
     {
         $this->testCase->getFrontController()->setControllerDirectory(dirname(__FILE__) . '/_files/application/controllers');
         $viewRenderer = Zend_Controller_Action_HelperBroker::getStaticHelper('viewRenderer');
@@ -670,7 +670,7 @@ class Zend_Test_PHPUnit_ControllerTestCaseTest extends PHPUnit\Framework\TestCas
         $view->addHelperPath('Zend/Dojo/View/Helper', 'Zend_Dojo_View_Helper');
         $this->assertFalse($view->dojo()->isEnabled(), 'Dojo is enabled? ', $view->dojo());
         $this->assertStringNotContainsString('Foo', $view->headTitle()->__toString(), 'Head title persisted?');
-    }*/
+    }
 
     /**
      * @group ZF-4070
