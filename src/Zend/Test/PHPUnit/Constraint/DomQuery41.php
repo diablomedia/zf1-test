@@ -217,7 +217,7 @@ class Zend_Test_PHPUnit_Constraint_DomQuery41 extends PHPUnit\Framework\Constrai
      * NOTE 2:
      * Interface changed again in PHPUnit 4.1.0 because of refactoring to SebastianBergmann\Comparator
      */
-    public function fail($other, $description, \SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null): void
+    public function fail(mixed $other, string $description, ?\SebastianBergmann\Comparator\ComparisonFailure $cannot_be_used = null): never
     {
         switch ($this->_assertType) {
             case self::ASSERT_CONTENT_CONTAINS:
